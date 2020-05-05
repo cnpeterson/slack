@@ -5,7 +5,7 @@ const (
     ConvListUrl = "https://slack.com/api/conversations.list"
 )
 
-type SlackCovoHistoryRequest struct {
+type ConvHistoryRequest struct {
     Token     string   `json:"token"`
     Channel   string   `json:"channel"`
     Cursor    *string  `json:"cursor,omitempty"`
@@ -15,15 +15,15 @@ type SlackCovoHistoryRequest struct {
     Oldest    *float64 `json:"oldest,omitempty"`
 }
 
-type SlackConvoHistoryResponse struct {
-    Ok               bool                      `json:"ok"`
-    Messages         []SlackConvHistoryMessage `json:"messages"`
-    HasMore          bool                      `json:"has_more"`
-    PinCount         int                       `json:"pin_count"`
-    ResponseMetadata RM                        `json:"response_metadata"`
+type ConvHistoryResponse struct {
+    Ok               bool                 `json:"ok"`
+    Messages         []ConvHistoryMessage `json:"messages"`
+    HasMore          bool                 `json:"has_more"`
+    PinCount         int                  `json:"pin_count"`
+    ResponseMetadata RM                   `json:"response_metadata"`
 }
 
-type SlackConvHistoryMessage struct {
+type ConvHistoryMessage struct {
     Type string `json:"type"`
     User string `json:"user"`
     Text string `json:"text"`
@@ -32,4 +32,36 @@ type SlackConvHistoryMessage struct {
 
 type RM struct {
     NextCursor string `json:"next_cursor"`
+}
+
+type ConvList struct {
+    OK      bool `json:"ok"`
+    Channels []ChannelList `json:"channels"`
+    ResponseMetadata RM
+}
+
+type ChannelList struct {
+    ID                 string
+    Name               string
+    IsChannel          bool
+    IsGroup            bool
+    IsIm               bool
+    Created            int64
+    Creator            string
+    IsArchived         bool
+    IsGeneral          bool
+    Unlinked           string
+    NameNormalized     string
+    IsShared           bool
+    IsExtShared        bool
+    IsOrgShared        bool
+    PendingShared      string
+    IsPendingExtShared bool
+    IsMember           bool
+    IsPrivate          bool
+    IsMpim             bool
+    Topic              map[string]string
+    Purpose            string
+    PreviousNames      []string
+    NumMembers         int
 }
