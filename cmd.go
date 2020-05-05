@@ -21,7 +21,7 @@ type Message struct {
     Text string `json:"text"`
 }
 
-func RequestParse (r *http.Request) (s CommandRequest, err error) {
+func CmdRequestParse (r *http.Request) (s CommandRequest, err error) {
     if err = r.ParseForm(); err != nil {
         return s, err
     }
