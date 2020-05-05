@@ -17,11 +17,7 @@ type CommandRequest struct {
     ChannelId    string `json:"channel_id"`
 }
 
-type Message struct {
-    Text string `json:"text"`
-}
-
-func CmdRequestParse (r *http.Request) (s CommandRequest, err error) {
+func NewCmdRequest (r *http.Request) (s CommandRequest, err error) {
     if err = r.ParseForm(); err != nil {
         return s, err
     }
