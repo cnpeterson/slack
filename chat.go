@@ -28,7 +28,7 @@ type ChatPostMessageResponse struct {
     Ok               bool              `json:"ok"`
     Channel          string            `json:"channel"`
     Timestamp        string            `json:"ts"`
-    Message          []ChatPostMessage `json:"message"`
+    Message          ChatPostMessage   `json:"message"`
 }
 
 type ChatPostMessage struct {
@@ -36,7 +36,7 @@ type ChatPostMessage struct {
     Text        string            `json:"text"`
     Username    string            `json:"username"`
     BotId       string            `json:"bot_id"`
-    //Attachments AttachmentsType   `json:"attachments"`
+    Attachments AttachmentsType   `json:"attachments"`
     Type        string            `json:"type"`
     Subtype     string            `json:"subtype"`
     TS          string            `json:"ts"`
