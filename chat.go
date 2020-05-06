@@ -28,10 +28,11 @@ type ChatPostMessageResponse struct {
     Ok               bool              `json:"ok"`
     Channel          string            `json:"channel"`
     Timestamp        string            `json:"ts"`
-    Messages         []ChatPostMessage `json:"message"`
+    Message          []ChatPostMessage `json:"message"`
 }
 
 type ChatPostMessage struct {
+    User        string            `json:"user"`
     Text        string            `json:"text"`
     Username    string            `json:"username"`
     BotId       string            `json:"bot_id"`
@@ -39,6 +40,8 @@ type ChatPostMessage struct {
     Type        string            `json:"type"`
     Subtype     string            `json:"subtype"`
     TS          string            `json:"ts"`
+    Team        string            `json:"team"`
+    BotProfile  BP                `json:"bot_profile"`
 }
 
 type AttachmentsType struct {
@@ -46,3 +49,20 @@ type AttachmentsType struct {
     Id       int    `json:"id"`
     Fallback string `json:"fallback"`
 }
+
+type BP struct {
+    ID       string `json:"id"`
+    Deleted  bool   `json:"deleted"`
+    Name     string `json:"name"`
+    Updated  int64  `json:"updated"`
+    AppId    string `json:"app_id"`
+    Icons    Icon   `json:"icons"`
+    TeamId   string `json:"team_id"`
+}
+
+type Icon struct {
+    Image36 string `json:"image_36"`
+    Image48 string `json:"image_48"`
+    Image72 string `json:"image_72"`
+}
+
