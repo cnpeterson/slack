@@ -51,7 +51,7 @@ type ChannelList struct {
     Creator            string            `json:"creator"`
     IsArchived         bool              `json:"is_archived"`
     IsGeneral          bool              `json:"is_general"`
-    Unlinked           string            `json:"unlinked"`
+    Unlinked           int               `json:"unlinked"`
     NameNormalized     string            `json:"name_normalized"`
     IsShared           bool              `json:"is_shared"`
     IsExtShared        bool              `json:"is_ext_shared"`
@@ -70,20 +70,20 @@ type ChannelList struct {
 type T struct {
     Value   string `json:"value"`
     Creator string `json:"creator"`
-    LastSet string `json:"last_set"`
+    LastSet int64  `json:"last_set"`
 }
 
 type P struct {
     Value   string `json:"value"`
     Creator string `json:"creator"`
-    LastSet string `json:"last_set"`
+    LastSet int64  `json:"last_set"`
 }
 
 type I struct {
     ID            string `json:"id"`
-    Created       string `json:"created"`
-    IsIm          string `json:"is_im"`
-    IsOrShared    string `json:"is_org_shared"`
+    Created       int64  `json:"created"`
+    IsIm          bool   `json:"is_im"`
+    IsOrShared    bool   `json:"is_org_shared"`
     User          string `json:"user"`
     IsUserDeleted bool   `json:"is_user_deleted"`
     Priority      int    `json:"priority"`
