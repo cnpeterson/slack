@@ -35,9 +35,10 @@ type RM struct {
 }
 
 type ConvList struct {
-    OK      bool `json:"ok"`
-    Channels []ChannelList `json:"channels"`
-    ResponseMetadata RM
+    OK               bool          `json:"ok"`
+    Channels         []ChannelList `json:"channels"`
+    ResponseMetadata RM            `json:"response_metadata"`
+    Info             map[string]I
 }
 
 type ChannelList struct {
@@ -55,13 +56,35 @@ type ChannelList struct {
     IsShared           bool              `json:"is_shared"`
     IsExtShared        bool              `json:"is_ext_shared"`
     IsOrgShared        bool              `json:"is_org_shared"`
-    PendingShared      string            `json:"pending_shared"`
+    PendingShared      []string          `json:"pending_shared"`
     IsPendingExtShared bool              `json:"is_pending_ext_shared"`
     IsMember           bool              `json:"is_member"`
     IsPrivate          bool              `json:"is_private"`
     IsMpim             bool              `json:"is_mpim"`
-    Topic              map[string]string `json:"topic"`
-    Purpose            map[string]string `json:"purpose"`
-    PreviousNames      []string          `json:"previous_names"`
-    NumMembers         int               `json:"num_members"`
+    IsOpen             bool              `json:"is_open"`
+    Topic              map[string]T      `json:"topic"`
+    Purpose            map[string]P      `json:"purpose"`
+    Priority           int               `json:"priority"`
+}
+
+type T struct {
+    Value   string `json:"value"`
+    Creator string `json:"creator"`
+    LastSet string `json:"last_set"`
+}
+
+type P struct {
+    Value   string `json:"value"`
+    Creator string `json:"creator"`
+    LastSet string `json:"last_set"`
+}
+
+type I struct {
+    ID            string `json:"id"`
+    Created       string `json:"created"`
+    IsIm          string `json:"is_im"`
+    IsOrShared    string `json:"is_org_shared"`
+    User          string `json:"user"`
+    IsUserDeleted bool   `json:"is_user_deleted"`
+    Priority      int    `json:"priority"`
 }
