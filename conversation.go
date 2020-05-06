@@ -62,8 +62,8 @@ type ChannelList struct {
     IsPrivate          bool              `json:"is_private"`
     IsMpim             bool              `json:"is_mpim"`
     IsOpen             bool              `json:"is_open"`
-    Topic              map[string]T      `json:"topic"`
-    Purpose            map[string]P      `json:"purpose"`
+    Topic              T                 `json:"topic"`
+    Purpose            P                 `json:"purpose"`
     Priority           int               `json:"priority"`
 }
 
